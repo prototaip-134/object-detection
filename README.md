@@ -57,6 +57,7 @@ root-repo
 ├── yolov5
 │   └── ...
 ├── README.md
+├── run_docker.sh
 └── zidane.jpg
 ```
 
@@ -68,9 +69,13 @@ This repo will be using the docker image provided by ultralytics for YoloV5:
 ```
 sudo docker pull ultralytics/yolov5:latest
 ```
-Then run the following to run a container:
+Make the `run_docker.sh` executable:
 ```
-sudo docker run --ipc=host --gpus all --shm-size=24g -it -p 8888:8888 -v /home/sadat/Desktop/object-detection/datasets:/usr/src/datasets -v /home/sadat/Desktop/object-detection/data:/usr/src/app/data ultralytics/yolov5:latest
+chmod +x run_docker.sh
+```
+Then run:
+```
+bash ./run_docker.sh
 ```
 Change the variables as necessary from the bash file. The default settings will have a shared memory of 24GB, use GPU, and mount the folders in the repo to the docker container.
 
@@ -85,14 +90,12 @@ http://localhost:8888/
 ```
 And, copy the token from the terminal to the box to use the notebook.
 
-## Training
-From `src/app`, run:
+## Dataset Setup and Training
+Got to `/setup` and run the `train.ipynb` notebook. This will have steps to download and setup the dataset as well as train the model with the [Comet](https://www.comet.com/site/) logger.
+
+If the dataset is already setup, the following could be used to train the model:
 ```
 python train.py --img 640 --batch 4 --epochs 3 --data /usr/src/app/data/part-iv-project1/data.yaml --weights yolov5s.pt --cache
-```
-Example: Train a pretrained 3CD model on wlasl with periodic validation.
-```
-python mmaction2/tools/train.py models/c3d/c3d_16x16x1_sports1m_wlasl100_rgb.py --validate --seed 0 --deterministic --gpus 1
 ```
 
 More details can be found in [here](https://docs.ultralytics.com/yolov5/quickstart_tutorial/#inference-with-detectpy).
