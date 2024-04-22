@@ -91,7 +91,7 @@ http://localhost:8888/
 And, copy the token from the terminal to the box to use the notebook.
 
 ## Dataset Setup and Training
-Got to `/setup` and run the `train.ipynb` notebook. This will have steps to download and setup the dataset as well as train the model with the [Comet](https://www.comet.com/site/) logger.
+Go to `/setup` and run the `train.ipynb` notebook. This will have steps to download and setup the dataset as well as train the model with the [Comet](https://www.comet.com/site/) logger.
 
 If the dataset is already setup, the following could be used to train the model:
 ```
